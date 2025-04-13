@@ -25,19 +25,13 @@ we are storing employees in the file system.
 public class EmployeeFileRepository {
     private EmployeeFileSerializer serializer;
 
-    public EmployeeFileRepository(EmployeeFileSerializer serializer) {
+    public EmployeeFileRepository(EmployeeFileSerializer serializer, List<Employee> employees) {
         this.serializer = serializer;
+        this.employees = employees;
     }
 
     public List<Employee> findAll() {
-     // Employees are kept in memory for simplicity
-     		Employee anna = new FullTimeEmployee("Anna Smith", 2000);
-     		Employee billy = new FullTimeEmployee("Billy Leech", 920);
-
-     		Employee steve = new PartTimeEmployee("Steve Jones", 800);
-     		Employee magda = new PartTimeEmployee("Magda Iovan", 920);
-
-     		return Arrays.asList(anna, billy, steve, magda);
+        return employees;
     }
 
     public void save(Employee employee) throws IOException {
