@@ -57,5 +57,14 @@ public abstract class Employee {
     public String getFullName(){
         return this.firstName + " " + this.lastName;
     }
+
+
 }
 
+interface Taxable {
+
+    ArrayList<Tax> getTaxes();
+    default double calculateTax() {
+        return this.getTaxes().stream().mapToDouble(Tax::calculate).sum();
+    };
+}
